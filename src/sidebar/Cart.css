@@ -1,0 +1,9 @@
+.cart-container {
+  display: grid;
+  grid-template-columns: min-content 2fr 1fr;
+  align-items: center;
+  padding-left: 15px;
+  gap: 20px;
+  font-size: 12px;
+  text-align: left;
+}

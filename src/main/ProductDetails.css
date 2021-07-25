@@ -1,0 +1,25 @@
+.product-details-header {
+  text-align: right;
+}
+
+.product-details-container {
+  display: flex;
+}
+
+.product-details-carousel-container {
+  width: 640px;
+}
+
+.product-details {
+  display: flex;
+  flex-direction: column;
+  padding-left: 25px;
+  align-items: center;
+}
+
+.product-details__description {
+  text-align: center;
+  padding-top: 30px;
+  padding-bottom: 50px;
+  line-height: 1.5;
+}
