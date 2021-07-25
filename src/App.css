@@ -1,7 +1,6 @@
 .container {
   font-family: Montserrat, "Helvetica Neue", Arial, sans-serif;
   display: grid;
-  background-color: aquamarine;
   height: 100vh;
   grid-template-columns: 3fr minmax(350px, 1fr);
   grid-template-rows: min-content auto;
@@ -12,16 +11,14 @@
 
 .header {
   grid-area: header;
-  background-color: burlywood;
   text-align: center;
+  border-bottom: 1px solid lightgray;
 }
 
 .main {
   grid-area: main;
-  background-color: coral;
 }
 
 .sidebar {
   grid-area: sidebar;
-  background-color: cornflowerblue;
 }

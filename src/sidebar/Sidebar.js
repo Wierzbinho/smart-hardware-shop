@@ -12,10 +12,11 @@ export const Sidebar = () => {
     <div className="sidebar-container">
       <div className="sidebar-header">
         <h3>Shopping cart ({cartProducts.length})</h3>
-        
       </div>
+      <>
       <Cart/>
       <CartTotal/>
+      </>
     </div>
   );
 };
