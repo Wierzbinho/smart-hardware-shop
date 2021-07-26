@@ -1,3 +1,7 @@
+.sidebar-container {
+  height: calc(100vh - 81px);
+  overflow: auto;
+}
 .sidebar-header {
   text-align: center;
 }

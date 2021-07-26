@@ -6,4 +6,6 @@
   gap: 20px;
   font-size: 12px;
   text-align: left;
+  overflow: auto;
+  /* height: calc(100vh - 81px) */
 }

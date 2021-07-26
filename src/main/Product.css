@@ -8,3 +8,7 @@
 .product-image {
   width: 200px;
 }
+
+.product-name {
+  padding: 15px 0 10px;
+}
