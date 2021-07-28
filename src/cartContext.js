@@ -6,8 +6,6 @@ const DispatchContext = createContext();
 const reducer = (state, action) => {
   switch (action.type) {
     case "ADD":
-      const newState = [...state, action.product];
-      console.log(newState);
       return [...state, action.product];
     case "REMOVE":
       const tmp = [...state];

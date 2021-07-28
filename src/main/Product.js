@@ -14,6 +14,7 @@ export const Product = ({product, onClick}) => {
       <img className="product-image" src={defaultImage} alt={name} />
       <div className="product-name">{name}</div>
       <div className="product-price">฿{price}</div>
+      <div className="product-delete"></div>
     </div>
-  )
+  );
 }

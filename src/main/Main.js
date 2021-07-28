@@ -1,6 +1,7 @@
 import React, {useEffect, useState, useRef} from 'react'
 
-import { SearchBox } from "./SearchBox";
+import Snackbar from '@material-ui/core/Snackbar';
+import Alert from '@material-ui/lab/Alert';
 import { ProductList } from './ProductList';
 import { getProducts } from './api/productsService';
 import { BusyDots } from './BusyDots';
@@ -13,6 +14,7 @@ export const Main = () => {
   const [page, setPage] = useState(1);
   const [selectedProduct, setSelectedProduct] = useState();
   const [isRetrievingProducts, setIsRetrievingProducts] = useState(false);
+  const [errorMessage, setErrorMessage] = useState();
 
   const loader = useRef(null);
 
@@ -41,16 +43,22 @@ export const Main = () => {
     initializeObserver();
 }, []);
   
-  useEffect(() => {
-    const fetchProducts = async () => {
-      setIsRetrievingProducts(true);
-      const productsBatch = await getProducts({page});
-      setIsRetrievingProducts(false);
-      setProducts([...products, ...productsBatch]);
-    };
+useEffect(() => {
+  const fetchProducts = async () => {
+    setIsRetrievingProducts(true);
 
-    fetchProducts();
-  }, [page])
+    try {
+      const productsBatch = await getProducts({ page });
+      setProducts([...products, ...productsBatch]);
+      setIsRetrievingProducts(false);
+    } catch (e) {
+      setIsRetrievingProducts(false);
+      handleError(e);
+    }
+  };
+
+  fetchProducts();
+}, [page]);
 
   const onProductClick = (product) => {
     setSelectedProduct(product);
@@ -58,8 +66,17 @@ export const Main = () => {
 
   const onProductDetailsClose = () => {
     setSelectedProduct(undefined);
+  };
+
+  const handleError = (e) => {
+    setErrorMessage(`Unable to retrieve product list.`);
+    console.log(e);
   }
-  
+ 
+  const handleErrorSnackbarClose = () => {
+    setErrorMessage();
+  };
+
   return (
     <>
       <div className="main-container">
@@ -67,13 +84,19 @@ export const Main = () => {
           <h2>Featured products</h2>
         </div>
         {/* <SearchBox/> */}
-        <ProductList
-          products={products}
-          onProductClick={onProductClick}
-        />
+        <ProductList products={products} onProductClick={onProductClick} />
         <div ref={loader}>{isRetrievingProducts && <BusyDots />}</div>
       </div>
-      <ProductDetails onClose={onProductDetailsClose} product={selectedProduct} isOpen={!!selectedProduct}/>
+      <ProductDetails
+        onClose={onProductDetailsClose}
+        product={selectedProduct}
+        isOpen={!!selectedProduct}
+      />
+      <Snackbar open={!!errorMessage} onClose={handleErrorSnackbarClose}>
+        <Alert onClose={handleErrorSnackbarClose} severity="error" variant="filled">
+          {errorMessage}
+        </Alert>
+      </Snackbar>
     </>
   );
 }
