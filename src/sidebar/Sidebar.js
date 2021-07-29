@@ -1,7 +1,7 @@
 import { Cart } from "./Cart";
-import { CartTotal } from "./CartTotal";
 import { useCart } from "../cartContext";
 import { CartEmpty } from "./CartEmpty";
+import { CartHeader } from "./CartHeader";
 
 import "./Sidebar.css";
 
@@ -11,15 +11,10 @@ export const Sidebar = () => {
   return (
     <div className="sidebar-container">
       <div className="sidebar-header">
-        <h3>Shopping cart ({cartItems.length})</h3>
+        <CartHeader items={cartItems} />
       </div>
-      {!!cartItems.length && (
-        <>
-          <Cart />
-          <CartTotal />
-        </>
-      )}
-      {!cartItems.length && <CartEmpty/>}
+      {!!cartItems.length && <Cart items={cartItems} />}
+      {!cartItems.length && <CartEmpty />}
     </div>
   );
 };

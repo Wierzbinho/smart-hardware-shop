@@ -1,15 +1,18 @@
 
 import { CartItem } from './CartItem';
-import { useCart } from '../cartContext';
+import { CartTotal } from './CartTotal';
 
 import './Cart.css';
 
-export const Cart = () => {
-  const cartItems = useCart();
-
+export const Cart = ({items}) => {
   return (
-    <div className="cart-container">
-      {cartItems.map((item, index)=> <CartItem key={item.id} {...item} index={index}/>)}
-    </div>
-  )
+    <>
+      <div className="cart-container">
+        {items.map((item, index) => (
+          <CartItem key={item.product.id} item={item} index={index} />
+        ))}
+      </div>
+      <CartTotal items={items}/>
+    </>
+  );
 }

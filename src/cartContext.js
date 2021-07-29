@@ -1,16 +1,18 @@
 import { useReducer, useContext, createContext } from "react";
+import { addToCart, incrementQuantity, decrementQuantity } from "./cartActions";
 
 const StateContext = createContext();
 const DispatchContext = createContext();
 
+
 const reducer = (state, action) => {
   switch (action.type) {
     case "ADD":
-      return [...state, action.product];
-    case "REMOVE":
-      const tmp = [...state];
-      tmp.splice(action.index, 1);
-      return tmp;
+      return addToCart(state, action.product);
+    case "INCREMENT_QTY":
+      return incrementQuantity(state, action.index);
+    case "DECREMENT_QTY":
+      return decrementQuantity(state, action.index);
     default:
       throw new Error(`unknown action ${action.type}`);
   }

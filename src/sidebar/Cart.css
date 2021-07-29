@@ -2,10 +2,13 @@
   display: grid;
   grid-template-columns: min-content 2fr 1fr 1fr;
   align-items: center;
-  padding-left: 15px;
+  padding: 0 15px;
   gap: 20px;
   font-size: 12px;
   text-align: left;
   overflow: auto;
-  /* height: calc(100vh - 81px) */
+}
+
+.cart-item-qty__button {
+  cursor: pointer;
 }
