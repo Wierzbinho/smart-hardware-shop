@@ -1,5 +1,5 @@
 .sidebar-container {
-  height: calc(100vh - 81px);
+  height: calc(100vh - 115px);
   overflow: auto;
   border-left: 1px solid lightgray;
 }
