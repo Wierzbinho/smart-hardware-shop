@@ -5,3 +5,7 @@
   overflow: auto;
   height: calc(100vh - 115px);
 }
+
+.loader {
+  margin-top: 30px;
+}

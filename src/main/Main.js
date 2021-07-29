@@ -84,7 +84,7 @@ useEffect(() => {
           <h2>Featured products</h2>
         </div>
         <ProductList products={products} onProductClick={onProductClick} />
-        <div ref={loader}>{isRetrievingProducts && <CircularProgress />}</div>
+        <div ref={loader} className="loader">{isRetrievingProducts && <CircularProgress />}</div>
       </div>
       <ProductDetails
         onClose={onProductDetailsClose}

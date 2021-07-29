@@ -18,12 +18,19 @@ export const ProductDetails = ({isOpen, onClose, product = {}}) => {
   
   const handleAddToCart = () => {
     dispatch({ type: "ADD", product });
-    setSnackbarOpen(true);
+    if (snackbarOpen) {
+      setSnackbarOpen(false);
+      setTimeout(() => {setSnackbarOpen(true)}, 150);
+    } else {
+      setSnackbarOpen(true);
+    }
   }
 
   const handleSnackbarClose = () => {
     setSnackbarOpen(false);
   }
+
+  console.log(snackbarOpen)
   
   return (
     <>
