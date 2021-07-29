@@ -30,8 +30,6 @@ export const ProductDetails = ({isOpen, onClose, product = {}}) => {
     setSnackbarOpen(false);
   }
 
-  console.log(snackbarOpen)
-  
   return (
     <>
       <Dialog onClose={onClose} open={isOpen} fullWidth={true} maxWidth={"md"}>
