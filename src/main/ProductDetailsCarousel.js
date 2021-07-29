@@ -6,7 +6,7 @@ import './ProductDetailsCarousel.css';
 const handleDragStart = (e) => e.preventDefault();
 
 export const ProductDetailsCarousel = ({images = []}) => {
-  const items = images.map(imageSrc => <img src={imageSrc} onDragStart={handleDragStart} />)
+  const items = images.map(imageSrc => <img className="carousel-image" src={imageSrc} onDragStart={handleDragStart} />)
   
   return <AliceCarousel mouseTracking items={items} autoWidth={true} disableButtonsControls/>;
 }

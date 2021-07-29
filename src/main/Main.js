@@ -2,9 +2,9 @@ import React, {useEffect, useState, useRef} from 'react'
 
 import Snackbar from '@material-ui/core/Snackbar';
 import Alert from '@material-ui/lab/Alert';
+import CircularProgress from '@material-ui/core/CircularProgress';
 import { ProductList } from './ProductList';
 import { getProducts } from './api/productsService';
-import { BusyDots } from './BusyDots';
 import { ProductDetails } from './ProductDetails';
 
 import './Main.css';
@@ -83,9 +83,8 @@ useEffect(() => {
         <div className="main-header">
           <h2>Featured products</h2>
         </div>
-        {/* <SearchBox/> */}
         <ProductList products={products} onProductClick={onProductClick} />
-        <div ref={loader}>{isRetrievingProducts && <BusyDots />}</div>
+        <div ref={loader}>{isRetrievingProducts && <CircularProgress />}</div>
       </div>
       <ProductDetails
         onClose={onProductDetailsClose}

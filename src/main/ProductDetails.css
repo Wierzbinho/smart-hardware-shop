@@ -3,11 +3,14 @@
 }
 
 .product-details-container {
-  display: flex;
+  display: grid;
+  grid-template-columns: 500px 1fr;
+  justify-items: center;
+  text-align: center;
 }
 
 .product-details-carousel-container {
-  width: 640px;
+  width: 500px;
 }
 
 .product-details {
@@ -22,4 +25,14 @@
   padding-top: 30px;
   padding-bottom: 50px;
   line-height: 1.5;
+}
+
+@media screen and (max-width: 840px){
+  .product-details-container {
+    grid-template-columns: 1fr;
+  }
+  .product-details__description {
+    padding-top: 15px;
+    padding-bottom: 25px;
+  }
 }

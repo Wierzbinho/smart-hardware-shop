@@ -4,4 +4,6 @@
   border: 1px solid lightgray;
   text-align: center;
   align-items: center;
+  gap: 5px;
+  padding: 0 2px;
 }
