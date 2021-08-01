@@ -1,8 +1,5 @@
 .sidebar-container {
-  height: calc(100vh - 82px);
+  height: calc(100vh - var(--header-height));
   overflow: auto;
-  border-left: 1px solid lightgray;
-}
-.sidebar-header {
-  text-align: center;
+  border-left: var(--divider-border);
 }

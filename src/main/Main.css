@@ -1,9 +1,10 @@
+
 .main-container {
   display: flex;
   flex-direction: column;
   align-items: center;
   overflow: auto;
-  height: calc(100vh - 82px);
+  height: calc(100vh - var(--header-height));
 }
 
 .loader {

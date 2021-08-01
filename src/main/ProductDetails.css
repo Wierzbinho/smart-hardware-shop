@@ -8,7 +8,7 @@
   justify-items: center;
   text-align: center;
   padding-bottom: 30px;
-  color: #404040;
+  color: var(--text-color);
 }
 
 .product-details-carousel-container {
@@ -23,7 +23,6 @@
 }
 
 .product-details__description {
-  text-align: center;
   padding-top: 30px;
   padding-bottom: 50px;
   line-height: 1.5;

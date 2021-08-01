@@ -1,6 +1,12 @@
+:root {
+  --header-height: 82px;
+  --text-color: #404040;
+  --divider-border: 1px solid lightgray;
+}
+
 .container {
   font-family: Montserrat, "Helvetica Neue", Arial, sans-serif;
-  color: #404040;
+  color: var(--text-color);
   display: grid;
   height: 100vh;
   grid-template-columns: 3fr minmax(350px, 1fr);
@@ -13,8 +19,7 @@
 
 .header {
   grid-area: header;
-  text-align: center;
-  border-bottom: 1px solid lightgray;
+  border-bottom: var(--divider-border);
   padding: 10px 0;
 }
 

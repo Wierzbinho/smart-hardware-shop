@@ -1,5 +1,3 @@
-import { useCart } from "../cartContext";
-
 const calculateItemQty = (cartItems) => {
   return cartItems.reduce((totalQty, item) => totalQty += item.qty, 0);
 }

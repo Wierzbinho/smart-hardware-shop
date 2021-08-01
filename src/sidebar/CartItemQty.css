@@ -1,9 +1,8 @@
 .cart-item-qty {
   display: grid;
   grid-template-columns: 1fr 1fr 1fr;
-  border: 1px solid lightgray;
-  text-align: center;
-  align-items: center;
+  border: var(--divider-border);
+  justify-items: center;
   gap: 5px;
-  padding: 0 2px;
+  padding: 0
 }

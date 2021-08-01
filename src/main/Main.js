@@ -18,20 +18,6 @@ export const Main = () => {
 
   const loader = useRef(null);
 
-  const initializeObserver = () => {
-    const options = {
-      root: null,
-      rootMargin: "10px",
-      threshold: 1.0
-   };
-
-   const observer = new IntersectionObserver(handleObserver, options);
-   
-   if (loader.current) {
-      observer.observe(loader.current)
-   }
-  }
-
   const handleObserver = (entities) => {
     const target = entities[0];
     if (target.isIntersecting) {   
@@ -40,6 +26,20 @@ export const Main = () => {
 }
 
   useEffect(() => {
+    const initializeObserver = () => {
+      const options = {
+        root: null,
+        rootMargin: "10px",
+        threshold: 1.0
+     };
+  
+     const observer = new IntersectionObserver(handleObserver, options);
+     
+     if (loader.current) {
+        observer.observe(loader.current)
+     }
+    }
+
     initializeObserver();
 }, []);
   
@@ -49,7 +49,7 @@ useEffect(() => {
 
     try {
       const productsBatch = await getProducts({ page });
-      setProducts([...products, ...productsBatch]);
+      setProducts(loadedProducts => [...loadedProducts, ...productsBatch]);
       setIsRetrievingProducts(false);
     } catch (e) {
       setIsRetrievingProducts(false);

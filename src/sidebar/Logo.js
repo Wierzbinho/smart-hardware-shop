@@ -5,8 +5,7 @@ export const Logo = () => {
     <svg
       width="370"
       height="57"
-      viewBox="0 0 370 57"
-      class="css-1j8o68f">
+      viewBox="0 0 370 57">
       <defs id="SvgjsDefs3272"></defs>
       <g
         id="SvgjsG3273"
