@@ -1,7 +1,5 @@
-const calculateItemQty = (cartItems) => {
-  return cartItems.reduce((totalQty, item) => totalQty += item.qty, 0);
-}
+import { calculateTotalItemQty } from "./cartUtils";
 
 export const CartHeader = ({items}) => {
-  return <h3>Shopping cart ({calculateItemQty(items)})</h3>;
+  return <h3>Shopping cart ({calculateTotalItemQty(items)})</h3>;
 }

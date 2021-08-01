@@ -1,12 +1,6 @@
+import { calculateTotalPrice } from './cartUtils';
+
 import './CartTotal.css';
-
-const calculateTotalPrice = (cartItems) => {
-  const total = cartItems.reduce((total, {qty, product: {price}}) => {
-    return (total += Number(price) * qty);
-  }, 0);
-
-  return total.toFixed(2);
-};
 
 export const CartTotal = ({items}) => {
 

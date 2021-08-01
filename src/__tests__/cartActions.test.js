@@ -1,37 +1,53 @@
-import { addToCart, incrementQuantity, decrementQuantity } from "./cartActions";
+import { addToCart, incrementQuantity, decrementQuantity } from "../cartActions";
 
 describe("add to cart", () => {
-  const assertCartItem = (cartItem, expectedQty, expectedName) => {
-    expect(cartItem.qty).toBe(expectedQty);
-    expect(cartItem.product.name).toBe(expectedName);
+  const assertCartItem = ({item, expectedQty, expectedId}) => {
+    expect(item.qty).toBe(expectedQty);
+    expect(item.product.id).toBe(expectedId);
   };
 
   it("should add first item to cart purely", () => {
     const state = [];
-    const product = { name: "foo" };
+    const product = { id: 1 };
 
     const newState = addToCart(state, product);
 
     expect(state.length).toBe(0);
     expect(newState.length).toBe(1);
-    assertCartItem(newState[0], 1, "foo");
+    assertCartItem({item: newState[0], expectedQty: 1, expectedId: 1});
   });
 
-  it("should add subsequent item to cart purely", () => {
+  it("should add item with different id cart purely", () => {
     const state = [
       {
         qty: 1,
-        product: { name: "foo" },
+        product: { id: 1 },
       },
     ];
-    const newProduct = { name: "bar" };
+    const newProduct = { id: 2 };
 
     const newState = addToCart(state, newProduct);
 
     expect(state.length).toBe(1);
     expect(newState.length).toBe(2);
-    assertCartItem(newState[0], 1, "foo");
-    assertCartItem(newState[1], 1, "bar");
+    assertCartItem({item: newState[0], expectedQty: 1, expectedId: 1});
+    assertCartItem({item: newState[1], expectedQty: 1, expectedId: 2});
+  });
+
+  it("should increment the quantity of an added item if it already exists in cart", () => {
+    const state = [
+      {
+        qty: 1,
+        product: { id: 1 },
+      },
+    ];
+    const newProduct = { id: 1 };
+
+    const newState = addToCart(state, newProduct);
+
+    expect(state.length).toBe(1);
+    expect(newState.length).toBe(1);
+    assertCartItem({item: newState[0], expectedQty: 2, expectedId: 1});
   });
 });
 
