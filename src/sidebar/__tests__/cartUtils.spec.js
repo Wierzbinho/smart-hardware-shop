@@ -1,4 +1,4 @@
-import { calculateTotalItemQty } from "../cartUtils";
+import { calculateTotalItemQty, calculateTotalPrice } from "../cartUtils";
 
 describe("calculateTotalItemQty", () => {
   it('should return 0 if there are no items in the cart', () => {
@@ -43,5 +43,36 @@ describe("calculateTotalItemQty", () => {
     const actual = calculateTotalItemQty(items);
 
     expect(actual).toBe(6);
+  });
+});
+
+describe('calculateTotalPrice', () => {
+  it('should return 0.00 if there are no items in the cart', () => {
+    const actual = calculateTotalPrice([]);
+    expect(actual).toBe("0.00");
+  });
+
+  it('should calculate correct total price when there is one item in the cart', () => {
+    const items = [{qty: 1, product: {id: 1, price: 20}}]
+    
+    const actual = calculateTotalPrice(items);
+    
+    expect(actual).toBe("20.00");
+  });
+
+  it('should calculate correct total price when there are multiple items of the same type in the cart', () => {
+    const items = [{qty: 4, product: {id: 1, price: 20}}]
+    
+    const actual = calculateTotalPrice(items);
+    
+    expect(actual).toBe("80.00");
+  });
+
+  it('should calculate correct total price when there are multiple items of different types in the cart', () => {
+    const items = [{qty: 4, product: {id: 1, price: 20}}, {qty: 3, product: {id: 2, price: 10.50}}]
+    
+    const actual = calculateTotalPrice(items);
+    
+    expect(actual).toBe("111.50");
   });
 });
